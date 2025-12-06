@@ -15,16 +15,4 @@ export class BackendApiService {
   sendGetRequest(pathVariable: string): Observable<DemoResponse> {
     return this.httpClient.get<DemoResponse>(`${this.baseUrl}/${pathVariable}`);
   }
-
-  getSuccess(): Observable<DemoResponse> {
-    return this.httpClient.get<DemoResponse>(`${this.baseUrl}/success`);
-  }
-
-  getError(): Observable<DemoResponse> {
-    return this.httpClient.get<DemoResponse>(`${this.baseUrl}/error`);
-  }
-
-  getUpgradeRequired(): Observable<DemoResponse> {
-    return this.httpClient.get<DemoResponse>(`${this.baseUrl}/upgrade`);
-  }
 }
