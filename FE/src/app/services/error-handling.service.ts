@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarRef, TextOnlySnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -14,9 +14,12 @@ export class ErrorHandlingService {
 
   constructor(private snackBar: MatSnackBar) { }
 
-  handleError(errorType: string): void {
+  handleError(errorType: string): MatSnackBarRef<TextOnlySnackBar> {
     const message = this.errorTypeMapping[errorType] || "An unexpected error occurred";
-    this.snackBar.open(message, "Close", { duration: 3000 });
+    if (errorType == "PAYMENT_REQUIRED_ERROR") {
+      return this.snackBar.open(message, "Upgrade now", { duration: 6000 });
+    }
+    return this.snackBar.open(message, undefined, { duration: 3000 });
   }
 }
 
