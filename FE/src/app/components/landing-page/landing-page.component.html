@@ -8,8 +8,8 @@
     </mat-card-content>
 
     <mat-card-footer class="buttons">
-        <button mat-flat-button color="primary">Success</button>
-        <button mat-flat-button color="warn">Error</button>
-        <button mat-flat-button>Upgrade Required</button>
+        <button mat-flat-button (click)="clickButton('success')">Success</button>
+        <button mat-flat-button (click)="clickButton('error')">Error</button>
+        <button mat-flat-button (click)="clickButton('upgrade')">Upgrade Required</button>
     </mat-card-footer>
 </mat-card>

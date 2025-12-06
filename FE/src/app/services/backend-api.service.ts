@@ -8,9 +8,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class BackendApiService {
 
-  private baseUrl: string = "http://localhost:8080"
+  private baseUrl: string = "http://localhost:8080/api/demo"
 
   constructor(private httpClient: HttpClient) { }
+
+  sendGetRequest(pathVariable: string): Observable<DemoResponse> {
+    return this.httpClient.get<DemoResponse>(`${this.baseUrl}/${pathVariable}`);
+  }
 
   getSuccess(): Observable<DemoResponse> {
     return this.httpClient.get<DemoResponse>(`${this.baseUrl}/success`);
