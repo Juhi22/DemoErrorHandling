@@ -1,0 +1,26 @@
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DemoResponse } from '../interfaces/demo-response';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class BackendApiService {
+
+  private baseUrl: string = "http://localhost:8080"
+
+  constructor(private httpClient: HttpClient) { }
+
+  getSuccess(): Observable<DemoResponse> {
+    return this.httpClient.get<DemoResponse>(`${this.baseUrl}/success`);
+  }
+
+  getError(): Observable<DemoResponse> {
+    return this.httpClient.get<DemoResponse>(`${this.baseUrl}/error`);
+  }
+
+  getUpgradeRequired(): Observable<DemoResponse> {
+    return this.httpClient.get<DemoResponse>(`${this.baseUrl}/upgrade`);
+  }
+}
